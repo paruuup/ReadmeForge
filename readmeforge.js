@@ -2106,5 +2106,31 @@
   // Initialize dark mode on page load
   initializeDarkMode();
 
+  /**
+   * Initialize Back to Top functionality
+   * @function initBackToTop
+   * @returns {void}
+   */
+  function initBackToTop() {
+    var previewBody = document.getElementById("previewBody");
+    var backToTopBtn = document.getElementById("backToTopBtn");
+
+    if (previewBody && backToTopBtn) {
+      previewBody.addEventListener("scroll", function() {
+        if (previewBody.scrollTop > 200) {
+          backToTopBtn.classList.add("show");
+        } else {
+          backToTopBtn.classList.remove("show");
+        }
+      });
+
+      backToTopBtn.addEventListener("click", function() {
+        previewBody.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  }
+
+  initBackToTop();
+
   init();
 })();
